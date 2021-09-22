@@ -3,11 +3,12 @@ version: "3.8"
 services:
   nginx:
     build:
-      context: client
+      # Nginx serves static files, which includes the JavaScript client
+      context: ./client
 
   redis:
-    image: redis:6.2-alpine
+    image: redis:6
 
   nodejs-app:
     build:
-      context: server
+      context: ./server

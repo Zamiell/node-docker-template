@@ -1,20 +1,19 @@
+// The configuration file for TypeScript
 {
+  // We extend the standard IsaacScript config
+  // https://github.com/IsaacScript/isaacscript-tsconfig/blob/main/tsconfig.node.json
+  "extends": "isaacscript-tsconfig/tsconfig.node.json",
+
+  // https://www.typescriptlang.org/docs/handbook/compiler-options.html
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    // "outDir" specifies the output directory
+    // By default, it will put the compiled ".js" next to the respective ".ts" file,
+    // which will clutter the "src" directory
+    "outDir": "./dist",
   },
-  "include": ["src"]
+
+  // A list of the TypeScript files to compile
+  "include": [
+    "./src/**/*.ts",
+  ],
 }

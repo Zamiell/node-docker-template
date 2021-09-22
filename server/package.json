@@ -1,36 +1,23 @@
 {
-  "name": "node-docker-template-server",
-  "version": "0.1.0",
+  "name": "server",
+  "version": "1.0.0",
   "private": true,
-  "description": "A template full stack web application using NodeJS, Docker, Nginx, Redis, Socket.io, and React.",
-  "author": "Stephen Drodge <stephen.drodge@gmail.com>",
-  "license": "GPL-3.0-or-later",
-  "main": "src/app.ts",
+  "description": "The NodeJS server software for this application.",
+  "license": "GPL-3.0",
+  "author": "Zamiell",
+  "main": "src/main.ts",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/app.js",
+    "start": "node ./dist/main.js",
     "dev": "nodemon"
   },
   "nodemonConfig": {
+    "ext": "ts",
     "watch": [
       "src"
-    ],
-    "ext": "ts"
+    ]
   },
   "dependencies": {
-    "bufferutil": "^4.0.3",
-    "express": "^4.17.1",
-    "http-graceful-shutdown": "^3.1.4",
-    "redis": "^3.1.2",
-    "socket.io": "^4.2.0",
-    "utf-8-validate": "^5.0.5"
-  },
-  "devDependencies": {
-    "@types/express": "^4.17.13",
-    "@types/node": "^16.7.10",
-    "@types/redis": "^2.8.31",
-    "nodemon": "^2.0.12",
-    "ts-node": "^10.2.1",
-    "typescript": "^4.4.2"
+    "websocket-chat-server": "^1.0.4"
   }
 }

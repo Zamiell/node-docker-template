@@ -1,48 +1,36 @@
+// This is the configuration file for ESLint, the TypeScript linter
+// https://eslint.org/docs/user-guide/configuring
 module.exports = {
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    project: [
-      "./tsconfig.json",
-      "./client/tsconfig.json",
-      "./server/tsconfig.json",
-    ],
-  },
   extends: [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "airbnb",
-    "airbnb-typescript",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:prettier/recommended",
+    // The linter base is the shared IsaacScript config
+    // https://github.com/IsaacScript/eslint-config-isaacscript/blob/main/base.js
+    "eslint-config-isaacscript/base",
   ],
+
+  // Don't bother linting the template files (for inserting into a new IsaacScript project)
+  // or the compiled output
+  ignorePatterns: ["./file-templates/**", "./dist/**"],
+
+  parserOptions: {
+    // ESLint needs to know about the project's TypeScript settings in order for TypeScript-specific
+    // things to lint correctly
+    project: "./tsconfig.json",
+  },
+
+  // We modify the linting rules from the base for some specific things
+  // (listed in alphabetical order)
   rules: {
-    "no-console": "off",
-    "no-restricted-syntax": [
-      // redefine airbnb's restricted syntax rule minus the ban on for-of loops
+    // Documentation:
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unused-modules.md
+    // Not defined in parent configs
+    // This helps to find dead code that should be deleted
+    "import/no-unused-modules": [
       "error",
       {
-        selector: "ForInStatement",
-        message:
-          "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.",
-      },
-      {
-        selector: "LabeledStatement",
-        message:
-          "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.",
-      },
-      {
-        selector: "WithStatement",
-        message:
-          "`with` is disallowed in strict mode because it makes code impossible to predict and optimize.",
+        missingExports: true,
+        unusedExports: true,
+        ignoreExports: [".eslintrc.js"],
       },
     ],
   },
-  overrides: [
-    {
-      files: ["*.jsx", "*.tsx"],
-      rules: { "@typescript-eslint/explicit-module-boundary-types": "off" },
-    },
-  ],
 };

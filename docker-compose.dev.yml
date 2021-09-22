@@ -3,7 +3,7 @@ version: "3.8"
 services:
   nginx:
     build:
-      target: proxy-dev
+      target: nginx-dev
     ports:
       - 8080:80
 
@@ -16,11 +16,11 @@ services:
       - ./server/package-lock.json:/home/node/app/package-lock.json
       - ./server/tsconfig.json:/home/node/app/tsconfig.json
     ports:
-      - 5000:5000
+      - 8081:8081
 
   webpack-dev-server:
     build:
-      context: client
+      context: ./client
       target: dev
     volumes:
       - ./client/public:/home/node/app/public
@@ -30,4 +30,4 @@ services:
       - ./client/tsconfig.json:/home/node/app/tsconfig.json
       - ./client/.env:/home/node/app/.env
     ports:
-      - 3000:3000
+      - 8082:8082

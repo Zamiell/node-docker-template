@@ -1,43 +1,21 @@
 {
   "name": "node-docker-template",
-  "version": "0.1.0",
-  "private": true,
-  "description": "A template full stack web application using NodeJS, Docker, Nginx, Redis, Socket.io, and React.",
-  "author": "Stephen Drodge <stephen.drodge@gmail.com>",
-  "license": "GPL-3.0-or-later",
-  "scripts": {
-    "lint": "eslint . && prettier . -c",
-    "lint:fix": "eslint . --fix && prettier . --write",
-    "prepare": "husky install"
-  },
-  "lint-staged": {
-    "*.{js,ts,jsx,tsx}": [
-      "eslint --no-ignore --max-warnings 0 --fix",
-      "prettier --write"
-    ],
-    "*.{css,html,json,md,yml}": [
-      "prettier --write"
-    ]
-  },
-  "workspaces": [
-    "client",
-    "server"
+  "version": "1.0.0",
+  "description": "A template for a Docker environment with Nginx + Redis + Node.",
+  "keywords": [
+    "docker",
+    "nginx",
+    "redis",
+    "node"
   ],
+  "license": "GPL-3.0",
+  "author": "Zamiell",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint main.ts"
+  },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.31.0",
-    "@typescript-eslint/parser": "^4.31.0",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-airbnb-typescript": "^14.0.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.25.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^7.0.2",
-    "lint-staged": "^11.1.2",
-    "prettier": "^2.3.2",
-    "typescript": "^4.4.2"
+    "isaacscript-lint": "^1.0.61",
+    "typescript": "^4.4.3"
   }
 }
