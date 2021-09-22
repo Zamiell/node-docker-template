@@ -11,12 +11,6 @@
     "start": "node ./dist/main.js",
     "dev": "nodemon"
   },
-  "nodemonConfig": {
-    "ext": "ts",
-    "watch": [
-      "src"
-    ]
-  },
   "dependencies": {
     "websocket-chat-server": "^1.0.4"
   }
